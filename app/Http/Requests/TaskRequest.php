@@ -24,7 +24,7 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'product' => ['required', 'min:3', 'max:25'],
+            'product' => ['required', 'min:3', 'unique:tasks', 'max:25'],
             'color' => ['required', 'min:3', 'max:25'],
             'category' => ['required', 'min:3', 'max:25'],
             'price' => ['required', 'min:3', 'max:25'],

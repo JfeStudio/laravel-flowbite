@@ -16,7 +16,7 @@ class LoginController extends Controller
         $credentials = $request->validate([
             // 'username' => ['required', 'min:3', 'alpha_num', 'unique:users', 'max:25'],
             // 'name' => ['required', 'min:3', 'string',],
-            'email' => ['required', 'min:3', 'email'],
+            'email' => ['required', 'min:3', 'email:dns'],
             'password' => ['required', 'min:8'],
         ]);
 

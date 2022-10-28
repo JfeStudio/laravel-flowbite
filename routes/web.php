@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function(){
     Route::resource('tasks', TaskController::class);
     Route::post('logout', LogoutController::class)->name('logout');
+    Route::get('auth', [UserController::class, 'index'])->name('auth.index');
 });
 
 Route::middleware('guest')->group(function(){

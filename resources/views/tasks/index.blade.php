@@ -24,6 +24,9 @@
                             Price
                         </th>
                         <th scope="col" class="py-3 px-6">
+                            Images
+                        </th>
+                        <th scope="col" class="py-3 px-6">
                             Action
                         </th>
                     </tr>
@@ -47,17 +50,28 @@
                             <td class="py-4 px-6">
                                 {{ $task->price }}
                             </td>
-                            <td class="py-4 px-6 flex items-center">
-                                <a href="{{ route('tasks.show', $task->id) }}"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</a>
-                                <a href="{{ route('tasks.edit', $task->id) }}"
-                                    class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Edit</a>
-                                <form action="{{ route('tasks.destroy', $task->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
-                                </form>
+                            <td class="py-4 px-6">
+                                @if ($task->image)
+                                    <img class="w-20 h-20 rounded-md object-cover" src="/images/{{ $task->image }}"
+                                        alt="Rounded avatar">
+                                @else
+                                    <img class="w-20 h-20 rounded-md object-cover"
+                                        src="https://source.unsplash.com/random/?computer,laptop" alt="Rounded avatar">
+                                @endif
+                            </td>
+                            <td>
+                                <div class="py-4 px-6 flex items-center">
+                                    <a href="{{ route('tasks.show', $task->id) }}"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</a>
+                                    <a href="{{ route('tasks.edit', $task->id) }}"
+                                        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:focus:ring-yellow-900">Edit</a>
+                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

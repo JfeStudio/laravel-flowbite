@@ -3,14 +3,13 @@
         <a href="/tasks"
             class="text-black inline-block focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-base underline hover:no-underline py-2.5 mr-2 mb- dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700">Back</a>
         <h1 class="mb-4 text-3xl font-semibold">Edit Your Product :</h1>
-
-        <form class="w-1/2" action="{{ route('tasks.update', $tasks->id) }}" method="post">
+        <form class="w-1/2" action="{{ route('tasks.update', $task->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
                 <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name
                     Product</label>
-                <input type="text" name="product" id="product" value="{{ old('product', $tasks->product) }}"
+                <input type="text" name="product" id="product" value="{{ old('product', $task->product) }}"
                     class="@error('product') is-invalid @enderror shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Create your product">
                 @error('product')
@@ -22,7 +21,7 @@
             <div class="mb-6">
                 <label for="product"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Color</label>
-                <input type="text" name="color" id="product" value="{{ old('color', $tasks->color) }}"
+                <input type="text" name="color" id="product" value="{{ old('color', $task->color) }}"
                     class="@error('color') is-invalid @enderror shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Choose your color">
                 @error('color')
@@ -34,7 +33,7 @@
             <div class="mb-6">
                 <label for="product"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Category</label>
-                <input type="text" name="category" id="product" value="{{ old('category', $tasks->category) }}"
+                <input type="text" name="category" id="product" value="{{ old('category', $task->category) }}"
                     class="@error('category') is-invalid @enderror shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Add your category">
                 @error('category')
@@ -46,11 +45,32 @@
             <div class="mb-6">
                 <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Price</label>
-                <input type="text" name="price" id="product" value="{{ old('price', $tasks->price) }}"
+                <input type="text" name="price" id="product" value="{{ old('price', $task->price) }}"
                     class="@error('price') is-invalid @enderror shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Price">
                 @error('price')
                     <span class="text-sm text-red-500 front-medium">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </div>
+            <div class="mb-6">
+                @if ($task->image)
+                    <img class="w-20 h-20 rounded-md object-cover" src="/images/{{ $task->image }}"
+                        alt="Rounded avatar">
+                @else
+                    <img class="w-20 h-20 rounded-md object-cover"
+                        src="https://source.unsplash.com/random/?computer,laptop" alt="Rounded avatar">
+                @endif
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="user_avatar">Upload
+                    file</label>
+                <input
+                    class="@error('image') is-invalid @enderror block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    aria-describedby="user_avatar_help" id="user_avatar" type="file" name="image">
+                <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">A profile picture is
+                    useful to confirm your are logged into your account</div>
+                @error('image')
+                    <span class="text-sm text-red-500 font-medium">
                         {{ $message }}
                     </span>
                 @enderror

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('color');
             $table->string('category');
             $table->string('price');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
