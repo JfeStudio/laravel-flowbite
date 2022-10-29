@@ -11,9 +11,10 @@ class Navbar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $title;
+    public function __construct($title = null)
     {
-        //
+        $this->title = $title;
     }
 
     /**
@@ -25,8 +26,8 @@ class Navbar extends Component
     {
         $navbar = [
             '/' => 'Home',
-            'about' => 'About',
-            'services' => 'Services',
+            '/tasks' => 'Tasks',
+            '/auth' => 'Users',
             'pricing' => 'Pricing',
             'contact' => 'Contact',
         ];

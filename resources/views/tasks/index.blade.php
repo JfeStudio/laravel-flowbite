@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Tasks">
     <div class="container">
         <h1 class="mt-6 mb-4 text-3xl font-semibold text-slate-800">Data Product :</h1>
         <a href="{{ route('tasks.create') }}"
@@ -32,10 +32,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tasks as $index => $task)
+                    @foreach ($tasks as $task)
                         <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:border-gray-700">
                             <td class="py-4 px-6">
-                                {{ $index + 1 }}
+                                {{ $loop->iteration }}
                             </td>
                             <th scope="row"
                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -48,7 +48,7 @@
                                 {{ $task->category }}
                             </td>
                             <td class="py-4 px-6">
-                                {{ $task->price }}
+                                ${{ $task->price }}
                             </td>
                             <td class="py-4 px-6">
                                 @if ($task->image)
@@ -78,7 +78,7 @@
                 </tbody>
             </table>
             <div class="px-4 py-2">
-                {{ $tasks->links() }}
+                {{-- {{ $tasks->links() }} --}}
             </div>
         </div>
     </div>

@@ -12,7 +12,8 @@ class TaskController extends Controller
 {
     public function index(){
        return view('tasks.index', [
-        'tasks' => Task::orderBy('id', 'DESC')->paginate(3),
+        'tasks' => Task::orderBy('id', 'DESC')->get(),
+        // 'tasks' => DB::table('tasks')->orderBy('id', 'DESC')->get(),
        ]);
     }
 

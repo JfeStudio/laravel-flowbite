@@ -1,6 +1,5 @@
-<x-app-layout>
+<x-app-layout title="Homepage">
     <div class="container">
-
         @auth
             <h1 class="mt-6 mb-4 text-3xl font-semibold text-slate-800">Welcome <span
                     class="font-bold uppercase">{{ Auth::user()->name }}</span></h1>

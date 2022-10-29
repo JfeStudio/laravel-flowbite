@@ -1,6 +1,6 @@
-<x-app-layout>
+<x-app-layout title="Details">
     <div class="container mx-auto mt-5">
-        <h1 class="text-3xl font-semibold text-slate-800 mb-5">Details Product : {{ $tasks->product }}.</h1>
+        <h1 class="text-3xl font-semibold text-slate-800 mb-5">Details Product : {{ $task->product }}.</h1>
         <ul class="mb-8 space-y-4 text-left text-gray-500 dark:text-gray-400">
             <li class="flex items-center space-x-3">
                 <!-- Icon -->
@@ -11,8 +11,8 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 <span>
-                    @if ($tasks->image)
-                        <img class="w-32 h-32 rounded-md object-cover" src="/images/{{ $tasks->image }}"
+                    @if ($task->image)
+                        <img class="w-32 h-32 rounded-md object-cover" src="/images/{{ $task->image }}"
                             alt="Rounded avatar">
                     @else
                         <img class="max-w-xs h-auto rounded-lg shadow-xl dark:shadow-gray-800"
@@ -29,7 +29,7 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 <span><span class="font-semibold text-gray-900 dark:text-white">
-                        Product : </span>{{ $tasks->product }}</span>
+                        Product : </span>{{ $task->product }}</span>
             </li>
             <li class="flex items-center space-x-3">
                 <!-- Icon -->
@@ -40,7 +40,7 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 <span><span class="font-semibold text-gray-900 dark:text-white">
-                        Color : </span>{{ $tasks->color }}</span>
+                        Color : </span>{{ $task->color }}</span>
             </li>
             <li class="flex items-center space-x-3">
                 <!-- Icon -->
@@ -51,7 +51,7 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 <span><span class="font-semibold text-gray-900 dark:text-white">
-                        Category : </span>{{ $tasks->category }}</span>
+                        Category : </span>{{ $task->category }}</span>
             </li>
             <li class="flex items-center space-x-3">
                 <!-- Icon -->
@@ -62,7 +62,7 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 <span><span class="font-semibold text-gray-900 dark:text-white">
-                        Price : </span>{{ $tasks->price }}</span>
+                        Price : </span>{{ $task->price }}</span>
             </li>
         </ul>
         <a href="/tasks"
